@@ -26,7 +26,6 @@ def main():
         thread.join()
         plt.plot(histr[i], color=col[i])
 
-
     plt.title("Histogram")
     plt.grid(True)
     plt.xlim([0, 256])
