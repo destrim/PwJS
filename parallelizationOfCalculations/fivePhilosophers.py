@@ -24,8 +24,8 @@ class Philosopher(threading.Thread):
     def deadlock(self):
         fork1, fork2 = self.rightFork, self.leftFork
         while self.hungry:
-            has1 = fork1.acquire()  # philosopher picks right fork
-            has2 = fork2.acquire()  # then he try to pick left, holding right all the time
+            has1 = fork1.acquire()  # philosopher is trying to pick right fork
+            has2 = fork2.acquire()  # if succeeded, he is trying to pick left fork, holding right fork all the time
             if has1 and has2:  # if he has both, starts eating
                 break
         else:
@@ -37,8 +37,8 @@ class Philosopher(threading.Thread):
     def no_deadlock(self):
         fork1, fork2 = self.rightFork, self.leftFork
         while self.hungry:
-            fork1.acquire()  # philosopher picks right fork
-            locked = fork2.acquire(False)  # trying to pick left fork
+            fork1.acquire()  # philosopher is trying to pick right fork
+            locked = fork2.acquire(False)  # if succeeded, he tries to pick left fork
             if locked:  # if left fork free, he starts eating
                 break
             fork1.release()  # if not, he puts the right fork back
