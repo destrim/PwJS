@@ -1,5 +1,5 @@
 # PwJS
-Solved exercises for PwJS labs.
+Solved exercises for Programming in Script Languages laboratories.
 
 
 ## Exercises
